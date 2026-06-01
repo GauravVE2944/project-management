@@ -69,7 +69,7 @@ const syncWorkspaceSave = inngest.createFunction(
                 name: data.name,
                 slug: data.slug,
                 description: data.description,
-                ownerId: data.createdBy
+                ownerId: data.created_by
             }
         });
     }
