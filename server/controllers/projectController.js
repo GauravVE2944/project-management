@@ -1,7 +1,7 @@
-import { prisma } from "../prisma/prisma.ts";
+import { prisma } from "../prisma/prisma.js";
 
 // Create Project
-export const createProject = async (req: any, res: any) => {
+export const createProject = async (req, res) => {
     try {
         const { userId }  = await req.auth();
         const { name, description, priority, status, start_date, end_date, workspaceId, team_lead, team_members } = req.body;
@@ -46,8 +46,8 @@ export const createProject = async (req: any, res: any) => {
 
         //Add team members to the project
         if(team_members && team_members.length > 0) {
-            const memberstoAdd : any= [];
-            workspace.members.forEach((member : any) => {
+            const memberstoAdd = [];
+            workspace.members.forEach((member ) => {
                 if(team_members.includes(member.user.email)){
                     memberstoAdd.push(member.user.id);
                 }
@@ -55,7 +55,7 @@ export const createProject = async (req: any, res: any) => {
 
             // save data to project members table
                 await prisma.projectMember.createMany({
-                    data :  memberstoAdd.map((memberId : any) => ({
+                    data :  memberstoAdd.map((memberId ) => ({
                         userId: memberId,
                         projectId: project.id
                     }))
@@ -73,13 +73,13 @@ export const createProject = async (req: any, res: any) => {
             res.json({ project: projectwithMembers, message: "Project created successfully" });
         }
 
-    }catch (error : any) {
+    }catch (error ) {
         res.status(500).json({message: error.code || error.message || "An error occurred while creating the project"});
     }
 }
 
 // Update Project
-export const updateProject = async (req: any, res: any) => {
+export const updateProject = async (req, res) => {
     try {
         const { userId }  = await req.auth();
         const { projectId } = req.params;
@@ -122,7 +122,7 @@ export const updateProject = async (req: any, res: any) => {
 
         res.json({ project: updateProject, message: "Project updated successfully" });
       
-    } catch (error : any) {
+    } catch (error ) {
         res.status(500).json({message: error.code || error.message || "An error occurred while updating the project"});
     }
 

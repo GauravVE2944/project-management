@@ -1,6 +1,6 @@
-import { prisma } from "../prisma/prisma.ts";
+import { prisma } from "../prisma/prisma.js";
 
-export const getUserWorkspaces = async (req: any, res: any) => {
+export const getUserWorkspaces = async (req, res) => {
     const { userId } = req.auth();
 
     try{
@@ -30,7 +30,7 @@ export const getUserWorkspaces = async (req: any, res: any) => {
     }    
 }
 
-export const addMember = async (req: any, res: any) => {
+export const addMember = async (req, res) => {
     try{
         const { userId } = req.auth();
         const { workspaceId, email, role } = req.body;

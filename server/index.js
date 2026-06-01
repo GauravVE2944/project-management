@@ -1,12 +1,12 @@
 import express from 'express';
-import workspaceRouter from './routes/workspaceRoutes.ts';
-import { protect } from './middlewares/authMiddleware.ts';
+import workspaceRouter from './routes/workspaceRoutes.js';
+import { protect } from './middlewares/authMiddleware.js';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import { clerkMiddleware } from '@clerk/express'
-import projectRouter from './routes/projectRoutes.ts';
-import taskRouter from './routes/taskRoutes.ts';
-import commentRouter from './routes/commentRoutes.ts';
+import projectRouter from './routes/projectRoutes.js';
+import taskRouter from './routes/taskRoutes.js';
+import commentRouter from './routes/commentRoutes.js';
 
 dotenv.config();
 

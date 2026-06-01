@@ -1,6 +1,6 @@
 import express from "express";
-import { getUserWorkspaces, addMember } from "../controllers/workspaceController.ts";
-import { createProject, updateProject } from "../controllers/projectController.ts";
+import { getUserWorkspaces, addMember } from "../controllers/workspaceController.js";
+import { createProject, updateProject } from "../controllers/projectController.js";
 const projectRouter = express.Router();
 
 // Create project

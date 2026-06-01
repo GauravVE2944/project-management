@@ -1,5 +1,5 @@
-import inngest from "../inngest/index.ts";
-import { prisma } from "../prisma/prisma.ts";
+import inngest from "../inngest/index.js";
+import { prisma } from "../prisma/prisma.js";
 
 export const createTask = async (req, res) => {
     try {
@@ -43,7 +43,7 @@ export const createTask = async (req, res) => {
 
         res.json({ task: taskWithAssignee, message: "Task created successfully" });
 
-    } catch (error: any) {
+    } catch (error) {
         res.status(500).json({ message: error.code || error.message || "An error occurred while creating the task" });
     }
 }

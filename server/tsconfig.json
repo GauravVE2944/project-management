@@ -42,6 +42,6 @@
     "moduleDetection": "force",
     "skipLibCheck": true,
   },
-   "include": ["**/*.ts"],
+   "include": ["**/*.ts", "config/nodemailer.js", "index.js", "controllers/commentController.js", "config/prisma.config.js", "controllers/projectController.js", "controllers/taskController.js", "controllers/workspaceController.js", "inngest/index.js", "middlewares/authMiddleware.js", "prisma/prisma.js", "routes/commentRoutes.js", "routes/taskRoutes.js", "routes/workspaceRoutes.js"],
   "exclude": ["node_modules", "dist"]
 }

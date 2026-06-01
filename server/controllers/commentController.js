@@ -1,4 +1,4 @@
-import { prisma } from "../prisma/prisma.ts";
+import { prisma } from "../prisma/prisma.js";
 
 // Save comment for a task
 export const addComment = async (req, res) => {

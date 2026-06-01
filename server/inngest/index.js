@@ -1,6 +1,6 @@
 import { Inngest } from "inngest";
-import { prisma } from "../prisma/prisma.ts";
-import sendMail from "../config/nodemailer.ts";
+import { prisma } from "../prisma/prisma.js";
+import sendMail from "../config/nodemailer.js";
 
 const inngest = new Inngest({ "id": "project-management" });
 

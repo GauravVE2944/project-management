@@ -1,5 +1,5 @@
 import express from "express";
-import { getUserWorkspaces, addMember } from "../controllers/workspaceController.ts";
+import { getUserWorkspaces, addMember } from "../controllers/workspaceController.js";
 const workspaceRouter = express.Router();
 
 // Get all workspaces for a user
