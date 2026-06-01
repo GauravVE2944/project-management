@@ -21,7 +21,14 @@ const corsOptions = {
 
 app.use(express.json());
 app.use(cors(corsOptions));
-app.use(clerkMiddleware({ secretKey: process.env.CLERK_SECRET_KEY }));
+
+const clerkSecretKey = process.env.CLERK_SECRET_KEY;
+if (!clerkSecretKey) {
+  console.warn('CLERK_SECRET_KEY is not defined. Clerk middleware is disabled.');
+} else {
+  app.use(clerkMiddleware({ secretKey: clerkSecretKey }));
+}
+
 // Middleware
 //app.use('api/inngest', serve({client: inngest, functions}));
 
