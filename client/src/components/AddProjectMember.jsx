@@ -7,14 +7,12 @@ import { useAuth } from "@clerk/react";
 import { fetchWorkspaces } from "../features/workspaceSlice";
 
 const AddProjectMember = ({ isDialogOpen, setIsDialogOpen }) => {
-
     const [searchParams] = useSearchParams();
 
     const id = searchParams.get('id');
     const {getToken} = useAuth();
     const currentWorkspace = useSelector((state) => state.workspace?.currentWorkspace || null);
     const dispatch = useDispatch();
-console.log('currentworkspace', currentWorkspace)
     const project = currentWorkspace?.projects.find((p) => p.id === id);
     const projectMembersEmails = project?.members.map((member) => member.user.email);
 
