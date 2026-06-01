@@ -2,7 +2,7 @@ import { Inngest } from "inngest";
 import { prisma } from "../prisma/prisma.js";
 import sendMail from "../config/nodemailer.js";
 
-const inngest = new Inngest({ "id": "project-management" });
+export const inngest = new Inngest({ "id": "project-management" });
 
 // Inngest function to handle user creation to database
 const syncUserCreation = inngest.createFunction(
@@ -16,6 +16,7 @@ const syncUserCreation = inngest.createFunction(
                 id: data.id,
                 email: data.email_addresses[0].email_address,
                 name: data.first_name + " " + data.last_name,
+                image: data?.image_url || null
             }
         });
     }
@@ -179,5 +180,4 @@ const sendTaskAssignmentEmail = inngest.createFunction(
     }
 )
 
-export default inngest;
 export const functions = [syncUserCreation, syncUserDeletion, syncUserUpdate, syncWorkspaceSave, syncWorkspaceUpdate, syncWorkspaceDelete, syncWorkspaceMemberAdd, sendTaskAssignmentEmail];

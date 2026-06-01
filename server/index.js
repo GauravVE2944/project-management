@@ -7,7 +7,8 @@ import { clerkMiddleware } from '@clerk/express'
 import projectRouter from './routes/projectRoutes.js';
 import taskRouter from './routes/taskRoutes.js';
 import commentRouter from './routes/commentRoutes.js';
-
+import { serve } from 'inngest/express';
+import { inngest, functions } from './inngest/index.js';
 dotenv.config();
 
 const app = express();
@@ -30,11 +31,11 @@ if (!clerkSecretKey) {
 }
 
 // Middleware
-//app.use('api/inngest', serve({client: inngest, functions}));
+app.use('api/inngest', serve({client: inngest, functions}));
 
 // Routes
 app.get('/', (req, res) => {
-  res.json({ message: 'Hello, World!' });
+ res.send('API is running...');
 });
 app.use('/api/workspaces', protect, workspaceRouter);
 app.use('/api/project', protect, projectRouter);
