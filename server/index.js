@@ -34,9 +34,9 @@ app.use('/api/project', protect, projectRouter);
 app.use('/api/tasks', protect, taskRouter);
 app.use('/api/comments', protect, commentRouter);
 
-const PORT = process.env.PORT || 3000;
+export const config = {
+  runtime: 'nodejs18.x',
+};
 
-app.listen(PORT,() => {
-    console.log(`Server is running on port ${PORT}`);
-})
+export default app;
 
