@@ -31,7 +31,7 @@ if (!clerkSecretKey) {
 }
 
 // Middleware
-app.use('api/inngest', serve({client: inngest, functions}));
+app.use('/api/inngest', serve({client: inngest, functions}));
 
 // Routes
 app.get('/', (req, res) => {
