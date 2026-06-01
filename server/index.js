@@ -37,6 +37,9 @@ app.use('api/inngest', serve({client: inngest, functions}));
 app.get('/', (req, res) => {
  res.send('API is running...');
 });
+app.get('/api/health', (req, res) => {
+    res.json({ status: 'health is ok' });
+});
 app.use('/api/workspaces', protect, workspaceRouter);
 app.use('/api/project', protect, projectRouter);
 app.use('/api/tasks', protect, taskRouter);
