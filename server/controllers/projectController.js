@@ -83,7 +83,7 @@ export const updateProject = async (req, res) => {
     try {
         const { userId }  = await req.auth();
         const { projectId } = req.params;
-        const { id, name, description, priority, workspaceId, status, start_date, end_date, team_lead, team_members } = req.body;
+        const { id, name, description, priority, progress, workspaceId, status, start_date, end_date, team_lead, team_members } = req.body;
         
         // Check if workspace exists and user has admin role
         const workspace = await prisma.workspace.findUnique({
