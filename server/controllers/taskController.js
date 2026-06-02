@@ -12,11 +12,11 @@ export const createTask = async (req, res) => {
             include: { members: { include: { user: true } } }
         })
         if (!project) {
-            return res.status(404).json({ message: "Project not found" });
+            res.status(404).json({ message: "Project not found" });
         } else if (project.team_lead !== userId) {
-            return res.status(403).json({ message: "You don't have admin privilages for this project" });
+            res.status(403).json({ message: "You don't have admin privilages for this project" });
         } else if (assigneeId && !project.members.find((member) => member.user.id === assigneeId)) {
-            return res.status(403).json({ message: "Assignee is not a member of this project/ workspace" });
+            res.status(403).json({ message: "Assignee is not a member of this project/ workspace" });
         }
 
         // Update Project
@@ -29,8 +29,7 @@ export const createTask = async (req, res) => {
                 priority,
                 status,
                 assigneeId,
-                due_date: due_date ? new Date(due_date) : null,
-                project: { connect: { id: projectId } }
+                due_date: due_date ? new Date(due_date) : null
             }
         })
 
