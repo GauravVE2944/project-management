@@ -74,7 +74,7 @@ export const updateTask = async (req, res) => {
             data: req.body
         })
 
-        res.status(201).json({ task: updatedTask, message: "Task updated successfully" })
+        res.status(200).json({ task: updatedTask, message: "Task updated successfully" })
     }
     catch (error) {
         res.status(500).json({ message: error.code || error.message || "An error occurred while updating the task" });
@@ -108,7 +108,7 @@ export const deleteTask = async (req, res) => {
         await prisma.task.deleteMany({
             where : {id : { in : taskIds }}
         })
-       res.status({message: "Task deleted successfully" })
+       res.status(200).json({message: "Task deleted successfully" })
      }
     catch (error) {
         res.status(500).json({ message: error.code || error.message || "An error occurred while deleting the task" });
