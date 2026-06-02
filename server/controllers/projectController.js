@@ -96,7 +96,7 @@ export const updateProject = async (req, res) => {
         }
 
         if(!workspace.members.some((member) => member.userId === userId && member.role === "Admin")) {
-            const project = await prisma.project.find({
+            const project = await prisma.project.findUnique({
                 where: {id}
             });
             if(!project) {
