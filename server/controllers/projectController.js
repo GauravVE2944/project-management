@@ -114,8 +114,8 @@ export const updateProject = async (req, res) => {
                 description,
                 priority,
                 status,
-                start_Date: start_date ? new Date(start_date) : null,
-                end_Date: end_date ? new Date(end_date) : null
+                start_date: start_date ? new Date(start_date) : null,
+                end_date: end_date ? new Date(end_date) : null
             }
         })
 
