@@ -137,7 +137,7 @@ const syncWorkspaceMemberAdd = inngest.createFunction(
             data: {
                 userId: data.user_id,
                 workspaceId: data.organization_id,
-                role: data.role.toUpperCase()
+                role: data.role_name.toUpperCase()
             }
         });
     }
