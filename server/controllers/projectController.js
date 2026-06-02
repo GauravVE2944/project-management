@@ -114,7 +114,6 @@ export const updateProject = async (req, res) => {
                 description,
                 priority,
                 status,
-                workspaceId,
                  start_Date: start_date ? new Date(start_date) : null,
                 end_Date: end_date ? new Date(end_date) : null
             }
