@@ -39,7 +39,7 @@ export const createTask = async (req, res) => {
             include: { assignee: true }
         })
         // Trigger the inngest function to send an event along with parameters
-        inngest.send({ name: "app/task.assigned", data : {taskId: task.id, origin}});
+      //  inngest.send({ name: "app/task.assigned", data : {taskId: task.id, origin}});
 
         res.json({ task: taskWithAssignee, message: "Task created successfully" });
 
