@@ -57,7 +57,7 @@ export const updateTask = async (req, res) => {
         if (!task) {
             res.status(404).json({ message: "Task not found" });
         }
-        const project = await prisma.project.find({
+        const project = await prisma.project.findUnique({
             where: { id: task.projectId },
             include: { members: { include: { user: true } } }
         })
@@ -93,7 +93,7 @@ export const deleteTask = async (req, res) => {
             res.status(404).json({ message: "Task not found" });
         }
 
-        const project = await prisma.project.find({
+        const project = await prisma.project.findUnique({
             where: { id: tasks[0].projectId },
             include: { members: { include: { user: true } } }
         })
