@@ -63,7 +63,7 @@ const syncWorkspaceSave = inngest.createFunction(
         console.log("Save workspace event received:", event);
         const { data } = event;
         console.log("Workspace data:", data);
-        await prisma.workspace.create({
+        const workspace = await prisma.workspace.create({
             data: {
                 id: data.id,
                 name: data.name,
@@ -72,6 +72,22 @@ const syncWorkspaceSave = inngest.createFunction(
                 ownerId: data.created_by
             }
         });
+        // Get the inserted workspace id and set creator as admin of the workspace
+        try {
+            console.log("Workspace created with ID:", workspace.id);
+            const workspaceMember = await prisma.workspaceMember.create({
+                data: {
+                    userId: data.created_by,
+                    workspaceId: workspace.id,
+                    role: "ADMIN"
+                }
+            });
+          console.log("workspace member record created:", workspaceMember);
+
+        } catch (error) {
+            console.error("Workspace member record is not being inserted into workspaceMember table:", error);
+        }
+
     }
 );
 
