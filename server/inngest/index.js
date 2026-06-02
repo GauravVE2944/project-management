@@ -69,6 +69,7 @@ const syncWorkspaceSave = inngest.createFunction(
                 name: data.name,
                 slug: data.slug,
                 description: data.description,
+                image_url : data.image_url || null,
                 ownerId: data.created_by
             }
         });
@@ -109,14 +110,6 @@ const syncWorkspaceUpdate = inngest.createFunction(
             }
         });
 
-        // Set creator as admin of the workspace
-        await prisma.workspaceMember.create({
-            data: {
-                userId: data.created_by,
-                workspaceId: data.id,
-                role: "ADMIN"
-            }
-        });
     }
 );
 
