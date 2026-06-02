@@ -39,8 +39,8 @@ export const createProject = async (req, res) => {
                 priority,
                 workspaceId,
                 team_lead: teamLead?.id || null,
-                start_Date: start_date ? new Date(start_date) : null,
-                end_Date: end_date ? new Date(end_date) : null
+                start_date: start_date ? new Date(start_date) : null,
+                end_date: end_date ? new Date(end_date) : null
             }
         });
 
